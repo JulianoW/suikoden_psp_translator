@@ -66,6 +66,7 @@ namespace SuikodenPSP.Tools
         }
     }
 
+    // There is probably a better way to split up the json files, but this worked.
     public class TranslateResolver : DefaultContractResolver
     {
         protected override JsonProperty CreateProperty(MemberInfo member, MemberSerialization memberSerialization)
@@ -73,6 +74,7 @@ namespace SuikodenPSP.Tools
             JsonProperty prop = base.CreateProperty(member, memberSerialization);
             if (prop.UnderlyingName == "Hacking_Notes")
             {
+                // drop hacking notes when saving translation
                 return null;
             }
             return prop;
@@ -86,6 +88,7 @@ namespace SuikodenPSP.Tools
             JsonProperty prop = base.CreateProperty(member, memberSerialization);
             if (prop.UnderlyingName == "Translated_Text" || prop.UnderlyingName == "Translation_Notes")
             {
+                // drop translation and translation notes when saving hacking notes
                 return null;
             }
             return prop;
