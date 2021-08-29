@@ -20,7 +20,8 @@ namespace SuikodenPSPTranslator
         public GSDText_Item current_item { get; set; }
         public Suikoden_PSP_Translator()
         {
-            Init_Files();
+            files = FileHandler.Init_Files();
+            ID_Duplicates();
             InitializeComponent();
 
             ddl_Files.DataSource = files;
@@ -30,29 +31,7 @@ namespace SuikodenPSPTranslator
             ddl_Search_Type.SelectedIndex = 0;
         }
 
-        private void Init_Files()
-        {
-            // initialize files
-            files = new List<GSDText_File>();
 
-            // parse text and translation files into jarrays
-            JArray array1 = JArray.Parse(GZIP.Extract("output_text.json.gz"));
-            JArray array2 = JArray.Parse(GZIP.Extract("output_translation.json.gz"));
-
-            // merge jarray's
-            array1.Merge(array2, new JsonMergeSettings { MergeArrayHandling = MergeArrayHandling.Merge });
-            // convert merged array into GSDText_File list
-            files = array1.ToObject<List<GSDText_File>>();
-            foreach (GSDText_File file in files)
-            {
-                // for each file, set the filename on all the GSDText_Items
-                file.Set_File_Names();
-                // change null texts to blank strings
-                file.Remove_Nulls();
-            }
-            // identify and set duplicates
-            ID_Duplicates();
-        }
 
         private void ID_Duplicates()
         {
@@ -117,6 +96,8 @@ namespace SuikodenPSPTranslator
                 tbx_PSP_Text.Text = current_item.PSP_Text.Replace("[LINE]", Environment.NewLine);
                 tbx_Translate.Text = current_item.Translated_Text.Replace("[LINE]", Environment.NewLine);
                 tbx_PSX_Text.Text = current_item.PSX_Text.Replace("[LINE]", Environment.NewLine);
+                tbx_Translation_Notes.Text = current_item.Translation_Notes;
+                tbx_Hacking_Notes.Text = current_item.Hacking_Notes;
 
                 // adjust dupe display
                 if (current_item.duplicates.Count() > 0)
@@ -148,11 +129,7 @@ namespace SuikodenPSPTranslator
             {
                 // grab the GSDText_item in the current item's duplicate list that matches the id-1
                 GSDText_Item dupe = current_item.duplicates[int.Parse(tbx_Dupe_Current.Text) - 1];
-                if (dupe.Translated_Text == null)
-                {
-                    // change nulls to blanks
-                    dupe.Translated_Text = "";
-                }
+                
                 // update text boxes and labels; replace [LINE] w/ \n
                 lbl_Dupe_Name.Text = $"Duplicate File: {dupe.Filename} - #{dupe.id + 1}";
                 tbx_Dupe_PSP_Text.Text = dupe.PSP_Text.Replace("[LINE]", Environment.NewLine);
@@ -162,9 +139,7 @@ namespace SuikodenPSPTranslator
 
         private void Save_Translation()
         {
-            // write out current state into output translation gzipped json
-            string json = JsonConvert.SerializeObject(files, Formatting.Indented);
-            GZIP.Compress(json, @"output_translation.json.gz");
+            FileHandler.Save_Translation(files);
         }
 
         // UI OBJECTS 
@@ -186,8 +161,7 @@ namespace SuikodenPSPTranslator
             // Update UI
             update_item();
             // Save Changes
-            string json = JsonConvert.SerializeObject(files, Formatting.Indented);
-            GZIP.Compress(json, @"output_translation.json.gz");
+            //Save_Translation();
         }
 
         // Translation Updates
@@ -197,11 +171,32 @@ namespace SuikodenPSPTranslator
             Save_Translation();
         }
 
+
         private void tbx_Translate_TextChanged(object sender, EventArgs e)
         {
             // When translation txt changed, update Translated Text property of current item
             // change newline back to [LINE]
             current_item.Translated_Text = tbx_Translate.Text.Replace(Environment.NewLine, "[LINE]");
+        }
+        private void tbx_Translation_Notes_Leave(object sender, EventArgs e)
+        {
+            // When leaving notes tbx, save
+            FileHandler.Save_Translation(files);
+        }
+        private void tbx_Translation_Notes_TextChanged(object sender, EventArgs e)
+        {
+            // When notes txt changed, update Notes Text property of current item
+            current_item.Translation_Notes = tbx_Translation_Notes.Text;
+        }
+        private void tbx_Hacking_Notes_Leave(object sender, EventArgs e)
+        {
+            // When leaving notes tbx, save
+            FileHandler.Save_Hacking_Notes(files);
+        }
+        private void tbx_Hacking_Notes_TextChanged(object sender, EventArgs e)
+        {
+            // When notes txt changed, update Notes Text property of current item
+            current_item.Hacking_Notes = tbx_Hacking_Notes.Text;
         }
 
         // Navigation - All trigger tbx_current_textchanged - don't need to save twice

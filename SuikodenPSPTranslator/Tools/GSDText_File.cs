@@ -43,6 +43,14 @@ namespace SuikodenPSP.Tools
                 {
                     item.PSX_Text = "";
                 }
+                if (item.Translation_Notes == null)
+                {
+                    item.Translation_Notes = "";
+                }
+                if (item.Hacking_Notes == null)
+                {
+                    item.Hacking_Notes = "";
+                }
             }
 
         }

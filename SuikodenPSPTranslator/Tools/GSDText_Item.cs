@@ -15,6 +15,8 @@ namespace SuikodenPSP.Tools
         public String PSP_Text { get; set; }
         public String Translated_Text { get; set; }
         public String PSX_Text { get; set; }
+        public String Translation_Notes { get; set; }
+        public String Hacking_Notes { get; set; }
         [JsonIgnore]
         public List<GSDText_Item> duplicates { get; set; }
         public bool ShouldSerializetable() { return false; }

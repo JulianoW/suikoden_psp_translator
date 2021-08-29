@@ -79,6 +79,7 @@
     <Compile Include="Tools\GSDText_File.cs" />
     <Compile Include="Tools\GSDText_Item.cs" />
     <Compile Include="Tools\GZIP.cs" />
+    <Compile Include="Tools\FileHandler.cs" />
     <Compile Include="Tools\PSX_File.cs" />
     <Compile Include="Tools\PSX_Text_Table.cs" />
     <EmbeddedResource Include="Suikoden_PSP_Translator.resx">
