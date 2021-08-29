@@ -388,7 +388,9 @@ namespace SuikodenPSPTranslator
             return c;
         }
 
-
-
+        private void btn_save_all_Click(object sender, EventArgs e)
+        {
+            FileHandler.Save_All_Files(files);
+        }
     }
 }

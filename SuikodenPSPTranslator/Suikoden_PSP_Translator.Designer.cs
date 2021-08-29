@@ -63,6 +63,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.tbx_Hacking_Notes = new System.Windows.Forms.TextBox();
+            this.btn_save_all = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // tbx_PSP_Text
@@ -410,12 +411,23 @@
             this.tbx_Hacking_Notes.TextChanged += new System.EventHandler(this.tbx_Hacking_Notes_TextChanged);
             this.tbx_Hacking_Notes.Leave += new System.EventHandler(this.tbx_Hacking_Notes_Leave);
             // 
+            // btn_save_all
+            // 
+            this.btn_save_all.Location = new System.Drawing.Point(1247, 15);
+            this.btn_save_all.Name = "btn_save_all";
+            this.btn_save_all.Size = new System.Drawing.Size(93, 23);
+            this.btn_save_all.TabIndex = 62;
+            this.btn_save_all.Text = "Force Save All";
+            this.btn_save_all.UseVisualStyleBackColor = true;
+            this.btn_save_all.Click += new System.EventHandler(this.btn_save_all_Click);
+            // 
             // Suikoden_PSP_Translator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ClientSize = new System.Drawing.Size(1361, 818);
+            this.Controls.Add(this.btn_save_all);
             this.Controls.Add(this.tbx_Hacking_Notes);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
@@ -495,6 +507,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox tbx_Hacking_Notes;
+        private System.Windows.Forms.Button btn_save_all;
     }
 }
 
