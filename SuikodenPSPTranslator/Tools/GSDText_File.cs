@@ -26,5 +26,25 @@ namespace SuikodenPSP.Tools
                 item.Filename = Filename;
             }
         }
+        public void Remove_Nulls()
+        {
+            foreach (GSDText_Item item in Text_Items)
+            {
+                // if items were null set them to blanks
+                if (item.PSP_Text == null)
+                {
+                    item.PSP_Text = "";
+                }
+                if (item.Translated_Text == null)
+                {
+                    item.Translated_Text = "";
+                }
+                if (item.PSX_Text == null)
+                {
+                    item.PSX_Text = "";
+                }
+            }
+
+        }
     }
 }

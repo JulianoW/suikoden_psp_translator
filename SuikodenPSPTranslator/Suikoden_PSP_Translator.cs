@@ -26,6 +26,8 @@ namespace SuikodenPSPTranslator
             ddl_Files.DataSource = files;
             ddl_Files.DisplayMember = "Display";
             ddl_Files.ValueMember = "Filename";
+
+            ddl_Search_Type.SelectedIndex = 0;
         }
 
         private void Init_Files()
@@ -45,6 +47,8 @@ namespace SuikodenPSPTranslator
             {
                 // for each file, set the filename on all the GSDText_Items
                 file.Set_File_Names();
+                // change null texts to blank strings
+                file.Remove_Nulls();
             }
             // identify and set duplicates
             ID_Duplicates();
@@ -69,7 +73,7 @@ namespace SuikodenPSPTranslator
                     }
                 }
             }
-            
+
             // linq query on list of all items
             // group by the text - select ones where count > 1 (duplicated items)
             var has_duplicates = items.GroupBy(x => x.PSP_Text)
@@ -105,15 +109,7 @@ namespace SuikodenPSPTranslator
             {
                 // find the item in the current file with given id
                 current_item = current_file.Text_Items.Where(x => x.id == current - 1).FirstOrDefault();
-                // if items were null set them to blanks
-                if (current_item.Translated_Text == null)
-                {
-                    current_item.Translated_Text = "";
-                }
-                if (current_item.PSX_Text == null)
-                {
-                    current_item.PSX_Text = "";
-                }
+                
             }
             if (current_item != null)
             {
@@ -343,7 +339,7 @@ namespace SuikodenPSPTranslator
         private void btn_Search_Click(object sender, EventArgs e)
         {
             // search current list for tbx_Search.txt in psp_text
-            
+
             int curr_no = 1;
             int total_no = 1;
             // get current and total numbers - make sure they're valid
@@ -353,7 +349,25 @@ namespace SuikodenPSPTranslator
                 {
                     // get a list of items in file that match search criteria
                     // order them in ascending order following the current item id
-                    List<GSDText_Item> results = current_file.Text_Items.Where(x => x.PSP_Text.Contains(tbx_Search.Text)).OrderBy(x => Mod((x.id+1 - curr_no),total_no)).ToList();
+                    List<GSDText_Item> results = new List<GSDText_Item>();
+
+                    // check which search type we're using to determine which property to search
+                    if (ddl_Search_Type.SelectedIndex == 0)
+                    {
+                        // Japanese
+                        results = current_file.Text_Items.Where(x => x.PSP_Text.Contains(tbx_Search.Text)).OrderBy(x => Mod((x.id + 1 - curr_no), total_no)).ToList();
+                    }
+                    if (ddl_Search_Type.SelectedIndex == 1)
+                    {
+                        // Translated
+                        results = current_file.Text_Items.Where(x => x.Translated_Text.Contains(tbx_Search.Text)).OrderBy(x => Mod((x.id + 1 - curr_no), total_no)).ToList();
+                    }
+                    if (ddl_Search_Type.SelectedIndex == 2)
+                    {
+                        // PSX Text
+                        results = current_file.Text_Items.Where(x => x.PSX_Text.Contains(tbx_Search.Text)).OrderBy(x => Mod((x.id + 1 - curr_no), total_no)).ToList();
+                    }
+
 
                     foreach (GSDText_Item item in results)
                     {
@@ -368,7 +382,6 @@ namespace SuikodenPSPTranslator
                 }
             }
         }
-
 
         private float Mod(float a, float b)
         {
