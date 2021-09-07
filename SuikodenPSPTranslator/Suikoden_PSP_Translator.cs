@@ -120,6 +120,7 @@ namespace SuikodenPSPTranslator
 
             }
             lbl_Current_File.Text = $"Current File: {current_file.Display}";
+            lbl_error.Text = current_item.Check_Errors();
         }
 
         private void update_dupe()
@@ -177,6 +178,9 @@ namespace SuikodenPSPTranslator
             // When translation txt changed, update Translated Text property of current item
             // change newline back to [LINE]
             current_item.Translated_Text = tbx_Translate.Text.Replace(Environment.NewLine, "[LINE]");
+            // code to validate line sizes
+            lbl_error.Text = current_item.Check_Errors(); 
+
         }
         private void tbx_Translation_Notes_Leave(object sender, EventArgs e)
         {
@@ -392,5 +396,6 @@ namespace SuikodenPSPTranslator
         {
             FileHandler.Save_All_Files(files);
         }
+
     }
 }

@@ -64,21 +64,23 @@
             this.label8 = new System.Windows.Forms.Label();
             this.tbx_Hacking_Notes = new System.Windows.Forms.TextBox();
             this.btn_save_all = new System.Windows.Forms.Button();
+            this.lbl_error = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // tbx_PSP_Text
             // 
             this.tbx_PSP_Text.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbx_PSP_Text.Location = new System.Drawing.Point(220, 90);
+            this.tbx_PSP_Text.Location = new System.Drawing.Point(174, 90);
             this.tbx_PSP_Text.Multiline = true;
             this.tbx_PSP_Text.Name = "tbx_PSP_Text";
-            this.tbx_PSP_Text.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbx_PSP_Text.Size = new System.Drawing.Size(350, 214);
+            this.tbx_PSP_Text.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.tbx_PSP_Text.Size = new System.Drawing.Size(423, 214);
             this.tbx_PSP_Text.TabIndex = 0;
+            this.tbx_PSP_Text.WordWrap = false;
             // 
             // tbx_Current
             // 
-            this.tbx_Current.Location = new System.Drawing.Point(323, 45);
+            this.tbx_Current.Location = new System.Drawing.Point(277, 45);
             this.tbx_Current.Name = "tbx_Current";
             this.tbx_Current.Size = new System.Drawing.Size(58, 20);
             this.tbx_Current.TabIndex = 2;
@@ -87,7 +89,7 @@
             // tbx_Total
             // 
             this.tbx_Total.Enabled = false;
-            this.tbx_Total.Location = new System.Drawing.Point(409, 45);
+            this.tbx_Total.Location = new System.Drawing.Point(363, 45);
             this.tbx_Total.Name = "tbx_Total";
             this.tbx_Total.Size = new System.Drawing.Size(58, 20);
             this.tbx_Total.TabIndex = 3;
@@ -97,14 +99,14 @@
             this.ddl_Files.FormattingEnabled = true;
             this.ddl_Files.Location = new System.Drawing.Point(12, 12);
             this.ddl_Files.Name = "ddl_Files";
-            this.ddl_Files.Size = new System.Drawing.Size(191, 797);
+            this.ddl_Files.Size = new System.Drawing.Size(153, 797);
             this.ddl_Files.TabIndex = 4;
             this.ddl_Files.SelectedIndexChanged += new System.EventHandler(this.ddl_Files_SelectedIndexChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(388, 48);
+            this.label1.Location = new System.Drawing.Point(342, 48);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(16, 13);
             this.label1.TabIndex = 5;
@@ -112,7 +114,7 @@
             // 
             // btn_Start
             // 
-            this.btn_Start.Location = new System.Drawing.Point(231, 43);
+            this.btn_Start.Location = new System.Drawing.Point(185, 43);
             this.btn_Start.Name = "btn_Start";
             this.btn_Start.Size = new System.Drawing.Size(40, 23);
             this.btn_Start.TabIndex = 6;
@@ -122,7 +124,7 @@
             // 
             // btn_Back
             // 
-            this.btn_Back.Location = new System.Drawing.Point(277, 43);
+            this.btn_Back.Location = new System.Drawing.Point(231, 43);
             this.btn_Back.Name = "btn_Back";
             this.btn_Back.Size = new System.Drawing.Size(40, 23);
             this.btn_Back.TabIndex = 7;
@@ -132,7 +134,7 @@
             // 
             // btn_Forward
             // 
-            this.btn_Forward.Location = new System.Drawing.Point(473, 43);
+            this.btn_Forward.Location = new System.Drawing.Point(427, 43);
             this.btn_Forward.Name = "btn_Forward";
             this.btn_Forward.Size = new System.Drawing.Size(40, 23);
             this.btn_Forward.TabIndex = 8;
@@ -142,7 +144,7 @@
             // 
             // btn_End
             // 
-            this.btn_End.Location = new System.Drawing.Point(519, 43);
+            this.btn_End.Location = new System.Drawing.Point(473, 43);
             this.btn_End.Name = "btn_End";
             this.btn_End.Size = new System.Drawing.Size(40, 23);
             this.btn_End.TabIndex = 9;
@@ -153,28 +155,30 @@
             // tbx_Translate
             // 
             this.tbx_Translate.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbx_Translate.Location = new System.Drawing.Point(604, 90);
+            this.tbx_Translate.Location = new System.Drawing.Point(606, 90);
             this.tbx_Translate.Multiline = true;
             this.tbx_Translate.Name = "tbx_Translate";
-            this.tbx_Translate.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbx_Translate.Size = new System.Drawing.Size(350, 214);
+            this.tbx_Translate.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.tbx_Translate.Size = new System.Drawing.Size(423, 214);
             this.tbx_Translate.TabIndex = 10;
+            this.tbx_Translate.WordWrap = false;
             this.tbx_Translate.TextChanged += new System.EventHandler(this.tbx_Translate_TextChanged);
             this.tbx_Translate.Leave += new System.EventHandler(this.tbx_Translate_Leave);
             // 
             // tbx_Dupe_Translate
             // 
             this.tbx_Dupe_Translate.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbx_Dupe_Translate.Location = new System.Drawing.Point(604, 387);
+            this.tbx_Dupe_Translate.Location = new System.Drawing.Point(609, 387);
             this.tbx_Dupe_Translate.Multiline = true;
             this.tbx_Dupe_Translate.Name = "tbx_Dupe_Translate";
-            this.tbx_Dupe_Translate.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbx_Dupe_Translate.Size = new System.Drawing.Size(350, 171);
+            this.tbx_Dupe_Translate.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.tbx_Dupe_Translate.Size = new System.Drawing.Size(422, 171);
             this.tbx_Dupe_Translate.TabIndex = 11;
+            this.tbx_Dupe_Translate.WordWrap = false;
             // 
             // btn_Dupe_End
             // 
-            this.btn_Dupe_End.Location = new System.Drawing.Point(519, 334);
+            this.btn_Dupe_End.Location = new System.Drawing.Point(473, 334);
             this.btn_Dupe_End.Name = "btn_Dupe_End";
             this.btn_Dupe_End.Size = new System.Drawing.Size(40, 23);
             this.btn_Dupe_End.TabIndex = 18;
@@ -184,7 +188,7 @@
             // 
             // btn_Dupe_Forward
             // 
-            this.btn_Dupe_Forward.Location = new System.Drawing.Point(473, 334);
+            this.btn_Dupe_Forward.Location = new System.Drawing.Point(427, 334);
             this.btn_Dupe_Forward.Name = "btn_Dupe_Forward";
             this.btn_Dupe_Forward.Size = new System.Drawing.Size(40, 23);
             this.btn_Dupe_Forward.TabIndex = 17;
@@ -194,7 +198,7 @@
             // 
             // btn_Dupe_Back
             // 
-            this.btn_Dupe_Back.Location = new System.Drawing.Point(277, 334);
+            this.btn_Dupe_Back.Location = new System.Drawing.Point(231, 334);
             this.btn_Dupe_Back.Name = "btn_Dupe_Back";
             this.btn_Dupe_Back.Size = new System.Drawing.Size(40, 23);
             this.btn_Dupe_Back.TabIndex = 16;
@@ -204,7 +208,7 @@
             // 
             // btn_Dupe_Start
             // 
-            this.btn_Dupe_Start.Location = new System.Drawing.Point(231, 334);
+            this.btn_Dupe_Start.Location = new System.Drawing.Point(185, 334);
             this.btn_Dupe_Start.Name = "btn_Dupe_Start";
             this.btn_Dupe_Start.Size = new System.Drawing.Size(40, 23);
             this.btn_Dupe_Start.TabIndex = 15;
@@ -215,7 +219,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(388, 339);
+            this.label2.Location = new System.Drawing.Point(342, 339);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(16, 13);
             this.label2.TabIndex = 14;
@@ -224,14 +228,14 @@
             // tbx_Dupe_Total
             // 
             this.tbx_Dupe_Total.Enabled = false;
-            this.tbx_Dupe_Total.Location = new System.Drawing.Point(409, 336);
+            this.tbx_Dupe_Total.Location = new System.Drawing.Point(363, 336);
             this.tbx_Dupe_Total.Name = "tbx_Dupe_Total";
             this.tbx_Dupe_Total.Size = new System.Drawing.Size(58, 20);
             this.tbx_Dupe_Total.TabIndex = 13;
             // 
             // tbx_Dupe_Current
             // 
-            this.tbx_Dupe_Current.Location = new System.Drawing.Point(323, 336);
+            this.tbx_Dupe_Current.Location = new System.Drawing.Point(277, 336);
             this.tbx_Dupe_Current.Name = "tbx_Dupe_Current";
             this.tbx_Dupe_Current.Size = new System.Drawing.Size(58, 20);
             this.tbx_Dupe_Current.TabIndex = 12;
@@ -241,7 +245,7 @@
             // 
             this.lbl_Dupe_Name.AutoSize = true;
             this.lbl_Dupe_Name.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Dupe_Name.Location = new System.Drawing.Point(223, 364);
+            this.lbl_Dupe_Name.Location = new System.Drawing.Point(177, 364);
             this.lbl_Dupe_Name.Name = "lbl_Dupe_Name";
             this.lbl_Dupe_Name.Size = new System.Drawing.Size(129, 16);
             this.lbl_Dupe_Name.TabIndex = 19;
@@ -250,23 +254,24 @@
             // tbx_Dupe_PSP_Text
             // 
             this.tbx_Dupe_PSP_Text.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbx_Dupe_PSP_Text.Location = new System.Drawing.Point(220, 387);
+            this.tbx_Dupe_PSP_Text.Location = new System.Drawing.Point(174, 387);
             this.tbx_Dupe_PSP_Text.Multiline = true;
             this.tbx_Dupe_PSP_Text.Name = "tbx_Dupe_PSP_Text";
-            this.tbx_Dupe_PSP_Text.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbx_Dupe_PSP_Text.Size = new System.Drawing.Size(350, 171);
+            this.tbx_Dupe_PSP_Text.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.tbx_Dupe_PSP_Text.Size = new System.Drawing.Size(423, 171);
             this.tbx_Dupe_PSP_Text.TabIndex = 20;
+            this.tbx_Dupe_PSP_Text.WordWrap = false;
             // 
             // tbx_Search
             // 
-            this.tbx_Search.Location = new System.Drawing.Point(694, 43);
+            this.tbx_Search.Location = new System.Drawing.Point(690, 40);
             this.tbx_Search.Name = "tbx_Search";
             this.tbx_Search.Size = new System.Drawing.Size(173, 20);
             this.tbx_Search.TabIndex = 55;
             // 
             // btn_Search
             // 
-            this.btn_Search.Location = new System.Drawing.Point(871, 42);
+            this.btn_Search.Location = new System.Drawing.Point(867, 39);
             this.btn_Search.Name = "btn_Search";
             this.btn_Search.Size = new System.Drawing.Size(75, 23);
             this.btn_Search.TabIndex = 56;
@@ -276,7 +281,7 @@
             // 
             // btn_copy
             // 
-            this.btn_copy.Location = new System.Drawing.Point(670, 333);
+            this.btn_copy.Location = new System.Drawing.Point(714, 336);
             this.btn_copy.Name = "btn_copy";
             this.btn_copy.Size = new System.Drawing.Size(75, 23);
             this.btn_copy.TabIndex = 23;
@@ -286,7 +291,7 @@
             // 
             // btn_copy_all
             // 
-            this.btn_copy_all.Location = new System.Drawing.Point(801, 333);
+            this.btn_copy_all.Location = new System.Drawing.Point(845, 336);
             this.btn_copy_all.Name = "btn_copy_all";
             this.btn_copy_all.Size = new System.Drawing.Size(75, 23);
             this.btn_copy_all.TabIndex = 24;
@@ -298,7 +303,7 @@
             // 
             this.lbl_Current_File.AutoSize = true;
             this.lbl_Current_File.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Current_File.Location = new System.Drawing.Point(223, 17);
+            this.lbl_Current_File.Location = new System.Drawing.Point(177, 17);
             this.lbl_Current_File.Name = "lbl_Current_File";
             this.lbl_Current_File.Size = new System.Drawing.Size(114, 16);
             this.lbl_Current_File.TabIndex = 25;
@@ -308,7 +313,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(223, 71);
+            this.label3.Location = new System.Drawing.Point(177, 71);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(98, 16);
             this.label3.TabIndex = 26;
@@ -318,7 +323,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(609, 71);
+            this.label4.Location = new System.Drawing.Point(611, 71);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(102, 16);
             this.label4.TabIndex = 27;
@@ -328,7 +333,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(608, 22);
+            this.label5.Location = new System.Drawing.Point(604, 19);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(54, 16);
             this.label5.TabIndex = 28;
@@ -337,18 +342,19 @@
             // tbx_PSX_Text
             // 
             this.tbx_PSX_Text.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbx_PSX_Text.Location = new System.Drawing.Point(990, 90);
+            this.tbx_PSX_Text.Location = new System.Drawing.Point(1041, 90);
             this.tbx_PSX_Text.Multiline = true;
             this.tbx_PSX_Text.Name = "tbx_PSX_Text";
-            this.tbx_PSX_Text.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbx_PSX_Text.Size = new System.Drawing.Size(350, 214);
+            this.tbx_PSX_Text.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.tbx_PSX_Text.Size = new System.Drawing.Size(423, 214);
             this.tbx_PSX_Text.TabIndex = 29;
+            this.tbx_PSX_Text.WordWrap = false;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(987, 71);
+            this.label6.Location = new System.Drawing.Point(1038, 71);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(100, 16);
             this.label6.TabIndex = 30;
@@ -362,7 +368,7 @@
             "Japanese",
             "Translated",
             "PSX Script"});
-            this.ddl_Search_Type.Location = new System.Drawing.Point(610, 43);
+            this.ddl_Search_Type.Location = new System.Drawing.Point(606, 40);
             this.ddl_Search_Type.Name = "ddl_Search_Type";
             this.ddl_Search_Type.Size = new System.Drawing.Size(79, 21);
             this.ddl_Search_Type.TabIndex = 54;
@@ -370,11 +376,11 @@
             // tbx_Translation_Notes
             // 
             this.tbx_Translation_Notes.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbx_Translation_Notes.Location = new System.Drawing.Point(220, 587);
+            this.tbx_Translation_Notes.Location = new System.Drawing.Point(174, 587);
             this.tbx_Translation_Notes.Multiline = true;
             this.tbx_Translation_Notes.Name = "tbx_Translation_Notes";
             this.tbx_Translation_Notes.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbx_Translation_Notes.Size = new System.Drawing.Size(579, 222);
+            this.tbx_Translation_Notes.Size = new System.Drawing.Size(676, 222);
             this.tbx_Translation_Notes.TabIndex = 57;
             this.tbx_Translation_Notes.TextChanged += new System.EventHandler(this.tbx_Translation_Notes_TextChanged);
             this.tbx_Translation_Notes.Leave += new System.EventHandler(this.tbx_Translation_Notes_Leave);
@@ -383,7 +389,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(223, 568);
+            this.label7.Location = new System.Drawing.Point(177, 568);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(114, 16);
             this.label7.TabIndex = 58;
@@ -393,7 +399,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(822, 568);
+            this.label8.Location = new System.Drawing.Point(862, 568);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(97, 16);
             this.label8.TabIndex = 60;
@@ -402,18 +408,18 @@
             // tbx_Hacking_Notes
             // 
             this.tbx_Hacking_Notes.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbx_Hacking_Notes.Location = new System.Drawing.Point(818, 587);
+            this.tbx_Hacking_Notes.Location = new System.Drawing.Point(858, 587);
             this.tbx_Hacking_Notes.Multiline = true;
             this.tbx_Hacking_Notes.Name = "tbx_Hacking_Notes";
             this.tbx_Hacking_Notes.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbx_Hacking_Notes.Size = new System.Drawing.Size(522, 222);
+            this.tbx_Hacking_Notes.Size = new System.Drawing.Size(606, 222);
             this.tbx_Hacking_Notes.TabIndex = 61;
             this.tbx_Hacking_Notes.TextChanged += new System.EventHandler(this.tbx_Hacking_Notes_TextChanged);
             this.tbx_Hacking_Notes.Leave += new System.EventHandler(this.tbx_Hacking_Notes_Leave);
             // 
             // btn_save_all
             // 
-            this.btn_save_all.Location = new System.Drawing.Point(1247, 15);
+            this.btn_save_all.Location = new System.Drawing.Point(1201, 15);
             this.btn_save_all.Name = "btn_save_all";
             this.btn_save_all.Size = new System.Drawing.Size(93, 23);
             this.btn_save_all.TabIndex = 62;
@@ -421,12 +427,23 @@
             this.btn_save_all.UseVisualStyleBackColor = true;
             this.btn_save_all.Click += new System.EventHandler(this.btn_save_all_Click);
             // 
+            // lbl_error
+            // 
+            this.lbl_error.AutoSize = true;
+            this.lbl_error.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_error.ForeColor = System.Drawing.Color.Red;
+            this.lbl_error.Location = new System.Drawing.Point(614, 311);
+            this.lbl_error.Name = "lbl_error";
+            this.lbl_error.Size = new System.Drawing.Size(0, 20);
+            this.lbl_error.TabIndex = 63;
+            // 
             // Suikoden_PSP_Translator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.ClientSize = new System.Drawing.Size(1361, 818);
+            this.ClientSize = new System.Drawing.Size(1471, 818);
+            this.Controls.Add(this.lbl_error);
             this.Controls.Add(this.btn_save_all);
             this.Controls.Add(this.tbx_Hacking_Notes);
             this.Controls.Add(this.label8);
@@ -508,6 +525,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox tbx_Hacking_Notes;
         private System.Windows.Forms.Button btn_save_all;
+        private System.Windows.Forms.Label lbl_error;
     }
 }
 
