@@ -65,6 +65,21 @@
             this.tbx_Hacking_Notes = new System.Windows.Forms.TextBox();
             this.btn_save_all = new System.Windows.Forms.Button();
             this.lbl_error = new System.Windows.Forms.Label();
+            this.cbx_Preview = new System.Windows.Forms.CheckBox();
+            this.pnl_Preview = new System.Windows.Forms.Panel();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.tbx_w1 = new System.Windows.Forms.TextBox();
+            this.tbx_w2 = new System.Windows.Forms.TextBox();
+            this.tbx_w3 = new System.Windows.Forms.TextBox();
+            this.tbx_h3 = new System.Windows.Forms.TextBox();
+            this.tbx_h2 = new System.Windows.Forms.TextBox();
+            this.tbx_h1 = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.tbx_Prompt = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // tbx_PSP_Text
@@ -437,12 +452,167 @@
             this.lbl_error.Size = new System.Drawing.Size(0, 20);
             this.lbl_error.TabIndex = 63;
             // 
+            // cbx_Preview
+            // 
+            this.cbx_Preview.AutoSize = true;
+            this.cbx_Preview.Location = new System.Drawing.Point(1043, 318);
+            this.cbx_Preview.Name = "cbx_Preview";
+            this.cbx_Preview.Size = new System.Drawing.Size(100, 17);
+            this.cbx_Preview.TabIndex = 64;
+            this.cbx_Preview.Text = "Enable Preview";
+            this.cbx_Preview.UseVisualStyleBackColor = true;
+            this.cbx_Preview.CheckedChanged += new System.EventHandler(this.cbx_Preview_CheckedChanged);
+            // 
+            // pnl_Preview
+            // 
+            this.pnl_Preview.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnl_Preview.Location = new System.Drawing.Point(1047, 420);
+            this.pnl_Preview.Name = "pnl_Preview";
+            this.pnl_Preview.Size = new System.Drawing.Size(200, 100);
+            this.pnl_Preview.TabIndex = 65;
+            this.pnl_Preview.Visible = false;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(1068, 344);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(56, 13);
+            this.label9.TabIndex = 73;
+            this.label9.Text = "# of Chars";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(1132, 344);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(52, 13);
+            this.label10.TabIndex = 74;
+            this.label10.Text = "Char Size";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(1196, 344);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(72, 13);
+            this.label11.TabIndex = 75;
+            this.label11.Text = "Pixel Override";
+            // 
+            // tbx_w1
+            // 
+            this.tbx_w1.Location = new System.Drawing.Point(1071, 364);
+            this.tbx_w1.Name = "tbx_w1";
+            this.tbx_w1.Size = new System.Drawing.Size(58, 20);
+            this.tbx_w1.TabIndex = 76;
+            this.tbx_w1.Text = "23";
+            this.tbx_w1.TextChanged += new System.EventHandler(this.tbx_h_w_changed);
+            // 
+            // tbx_w2
+            // 
+            this.tbx_w2.Location = new System.Drawing.Point(1135, 364);
+            this.tbx_w2.Name = "tbx_w2";
+            this.tbx_w2.Size = new System.Drawing.Size(58, 20);
+            this.tbx_w2.TabIndex = 77;
+            this.tbx_w2.Text = "12";
+            this.tbx_w2.TextChanged += new System.EventHandler(this.tbx_h_w_changed);
+            // 
+            // tbx_w3
+            // 
+            this.tbx_w3.Location = new System.Drawing.Point(1199, 364);
+            this.tbx_w3.Name = "tbx_w3";
+            this.tbx_w3.Size = new System.Drawing.Size(58, 20);
+            this.tbx_w3.TabIndex = 78;
+            this.tbx_w3.Text = "0";
+            this.tbx_w3.TextChanged += new System.EventHandler(this.tbx_h_w_changed);
+            // 
+            // tbx_h3
+            // 
+            this.tbx_h3.Location = new System.Drawing.Point(1199, 390);
+            this.tbx_h3.Name = "tbx_h3";
+            this.tbx_h3.Size = new System.Drawing.Size(58, 20);
+            this.tbx_h3.TabIndex = 81;
+            this.tbx_h3.Text = "0";
+            this.tbx_h3.TextChanged += new System.EventHandler(this.tbx_h_w_changed);
+            // 
+            // tbx_h2
+            // 
+            this.tbx_h2.Location = new System.Drawing.Point(1135, 390);
+            this.tbx_h2.Name = "tbx_h2";
+            this.tbx_h2.Size = new System.Drawing.Size(58, 20);
+            this.tbx_h2.TabIndex = 80;
+            this.tbx_h2.Text = "12";
+            this.tbx_h2.TextChanged += new System.EventHandler(this.tbx_h_w_changed);
+            // 
+            // tbx_h1
+            // 
+            this.tbx_h1.Location = new System.Drawing.Point(1071, 390);
+            this.tbx_h1.Name = "tbx_h1";
+            this.tbx_h1.Size = new System.Drawing.Size(58, 20);
+            this.tbx_h1.TabIndex = 79;
+            this.tbx_h1.Text = "4";
+            this.tbx_h1.TextChanged += new System.EventHandler(this.tbx_h_w_changed);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(1050, 366);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(18, 13);
+            this.label12.TabIndex = 82;
+            this.label12.Text = "W";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(1050, 393);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(15, 13);
+            this.label13.TabIndex = 83;
+            this.label13.Text = "H";
+            // 
+            // tbx_Prompt
+            // 
+            //this.tbx_Prompt.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+            this.tbx_Prompt.Location = new System.Drawing.Point(1292, 364);
+            this.tbx_Prompt.Name = "tbx_Prompt";
+            this.tbx_Prompt.Size = new System.Drawing.Size(58, 20);
+            this.tbx_Prompt.TabIndex = 85;
+            this.tbx_Prompt.Text = "1";
+            //this.tbx_Prompt.UseWaitCursor = true;
+            this.tbx_Prompt.TextChanged += new System.EventHandler(this.tbx_Prompt_TextChanged);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(1289, 344);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(50, 13);
+            this.label14.TabIndex = 84;
+            this.label14.Text = "Prompt #";
+            //this.label14.UseWaitCursor = true;
+            // 
             // Suikoden_PSP_Translator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ClientSize = new System.Drawing.Size(1471, 818);
+            this.Controls.Add(this.tbx_Prompt);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.tbx_h3);
+            this.Controls.Add(this.tbx_h2);
+            this.Controls.Add(this.tbx_h1);
+            this.Controls.Add(this.tbx_w3);
+            this.Controls.Add(this.tbx_w2);
+            this.Controls.Add(this.tbx_w1);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.pnl_Preview);
+            this.Controls.Add(this.cbx_Preview);
             this.Controls.Add(this.lbl_error);
             this.Controls.Add(this.btn_save_all);
             this.Controls.Add(this.tbx_Hacking_Notes);
@@ -526,6 +696,21 @@
         private System.Windows.Forms.TextBox tbx_Hacking_Notes;
         private System.Windows.Forms.Button btn_save_all;
         private System.Windows.Forms.Label lbl_error;
+        private System.Windows.Forms.CheckBox cbx_Preview;
+        private System.Windows.Forms.Panel pnl_Preview;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox tbx_w1;
+        private System.Windows.Forms.TextBox tbx_w2;
+        private System.Windows.Forms.TextBox tbx_w3;
+        private System.Windows.Forms.TextBox tbx_h3;
+        private System.Windows.Forms.TextBox tbx_h2;
+        private System.Windows.Forms.TextBox tbx_h1;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox tbx_Prompt;
+        private System.Windows.Forms.Label label14;
     }
 }
 

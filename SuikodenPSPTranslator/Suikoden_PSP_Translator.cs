@@ -31,8 +31,6 @@ namespace SuikodenPSPTranslator
             ddl_Search_Type.SelectedIndex = 0;
         }
 
-
-
         private void ID_Duplicates()
         {
             // Need to identify all duplicates for each GSDText_Item and add references to property "duplicates" (list)
@@ -86,9 +84,11 @@ namespace SuikodenPSPTranslator
             int current = 1;
             if (int.TryParse(tbx_Current.Text, out current)) // tbx current has the item id (plus one so it starts at 1)
             {
-                // find the item in the current file with given id
-                current_item = current_file.Text_Items.Where(x => x.id == current - 1).FirstOrDefault();
-                
+                if (current < current_file.Text_Items.Count())
+                {
+                    // find the item in the current file with given id
+                    current_item = current_file.Text_Items.Where(x => x.id == current - 1).FirstOrDefault();
+                }
             }
             if (current_item != null)
             {
@@ -121,6 +121,8 @@ namespace SuikodenPSPTranslator
             }
             lbl_Current_File.Text = $"Current File: {current_file.Display}";
             lbl_error.Text = current_item.Check_Errors();
+            tbx_Prompt.Text = "1";
+            Draw_Text();
         }
 
         private void update_dupe()
@@ -179,7 +181,8 @@ namespace SuikodenPSPTranslator
             // change newline back to [LINE]
             current_item.Translated_Text = tbx_Translate.Text.Replace(Environment.NewLine, "[LINE]");
             // code to validate line sizes
-            lbl_error.Text = current_item.Check_Errors(); 
+            lbl_error.Text = current_item.Check_Errors();
+            Draw_Text();
 
         }
         private void tbx_Translation_Notes_Leave(object sender, EventArgs e)
@@ -382,6 +385,22 @@ namespace SuikodenPSPTranslator
             }
         }
 
+        private void Draw_Text()
+        {
+            if (cbx_Preview.Checked)
+            {
+                Graphics g = pnl_Preview.CreateGraphics();
+
+                //Image sourceImage = Image.FromFile(@"D:\Suikoden\PSP\font_new\35.png");
+                //Rectangle sourceRect = new Rectangle(0, 0, 16, 16);
+                //g.DrawImage(sourceImage, 0, 0, sourceRect, GraphicsUnit.Pixel);
+                // Pen pen = new Pen(Color.Blue, 1);
+                //Rectangle r = new Rectangle(1, 1, 10, 10);
+                //g.DrawRectangle(pen, r);
+                current_item.DrawStuff(g, tbx_Prompt.Text);
+            }
+        }
+
         private float Mod(float a, float b)
         {
             float c = a % b;
@@ -397,5 +416,52 @@ namespace SuikodenPSPTranslator
             FileHandler.Save_All_Files(files);
         }
 
+        private void cbx_Preview_CheckedChanged(object sender, EventArgs e)
+        {
+            tbx_h_w_changed(sender, e);
+            pnl_Preview.Visible = cbx_Preview.Checked;
+            tbx_Prompt.Text = "1";
+            Draw_Text();
+        }
+
+        private void tbx_h_w_changed(object sender, EventArgs e)
+        {
+            int x1, x2, x3, y1, y2, y3 = -1;
+            int.TryParse(tbx_h1.Text, out y1);
+            int.TryParse(tbx_h2.Text, out y2);
+            int.TryParse(tbx_h3.Text, out y3);
+            int.TryParse(tbx_w1.Text, out x1);
+            int.TryParse(tbx_w2.Text, out x2);
+            int.TryParse(tbx_w3.Text, out x3);
+            if (y3 > 0)
+            {
+                pnl_Preview.Height = y3;
+            }
+            else
+            {
+                if (y1 > 0 && y2 > 0)
+                {
+                    pnl_Preview.Height = y1 * y2;
+                }
+            }
+            if (x3 > 0)
+            {
+                pnl_Preview.Width = x3;
+            }
+            else
+            {
+                if (x1 > 0 && x2 > 0)
+                {
+                    pnl_Preview.Width = x1 * x2;
+                }
+            }
+            Draw_Text();
+        }
+
+        private void tbx_Prompt_TextChanged(object sender, EventArgs e)
+        {
+
+            Draw_Text();
+        }
     }
 }
