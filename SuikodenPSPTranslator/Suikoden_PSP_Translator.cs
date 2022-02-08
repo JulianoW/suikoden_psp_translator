@@ -35,6 +35,22 @@ namespace SuikodenPSPTranslator
         {
             // Need to identify all duplicates for each GSDText_Item and add references to property "duplicates" (list)
 
+            // herp derp unique count
+            List<GSDText_Item> itemcnt = new List<GSDText_Item>();
+            foreach (GSDText_File file in files)
+            {
+                // loop through each text item
+                foreach (GSDText_Item item in file.Text_Items)
+                {
+                    // ignore any blank or null items
+                    if (item.PSP_Text != null && item.PSP_Text != "")
+                    {
+                        itemcnt.Add(item);
+                    }
+                }
+            }
+            var cnt = itemcnt.GroupBy(x => x.PSP_Text).ToDictionary(x => x.Key, x => x.Count());
+
             // create a single list of all text item
             List<GSDText_Item> items = new List<GSDText_Item>();
             // loop through all files
@@ -98,6 +114,7 @@ namespace SuikodenPSPTranslator
                 tbx_PSX_Text.Text = current_item.PSX_Text.Replace("[LINE]", Environment.NewLine);
                 tbx_Translation_Notes.Text = current_item.Translation_Notes;
                 tbx_Hacking_Notes.Text = current_item.Hacking_Notes;
+                lbl_table_field.Text = $"Table: {current_item.table} Index: {current_item.table_index}";
 
                 // adjust dupe display
                 if (current_item.duplicates.Count() > 0)
@@ -132,7 +149,7 @@ namespace SuikodenPSPTranslator
             {
                 // grab the GSDText_item in the current item's duplicate list that matches the id-1
                 GSDText_Item dupe = current_item.duplicates[int.Parse(tbx_Dupe_Current.Text) - 1];
-                
+
                 // update text boxes and labels; replace [LINE] w/ \n
                 lbl_Dupe_Name.Text = $"Duplicate File: {dupe.Filename} - #{dupe.id + 1}";
                 tbx_Dupe_PSP_Text.Text = dupe.PSP_Text.Replace("[LINE]", Environment.NewLine);
@@ -394,10 +411,45 @@ namespace SuikodenPSPTranslator
                 //Image sourceImage = Image.FromFile(@"D:\Suikoden\PSP\font_new\35.png");
                 //Rectangle sourceRect = new Rectangle(0, 0, 16, 16);
                 //g.DrawImage(sourceImage, 0, 0, sourceRect, GraphicsUnit.Pixel);
-                // Pen pen = new Pen(Color.Blue, 1);
-                //Rectangle r = new Rectangle(1, 1, 10, 10);
-                //g.DrawRectangle(pen, r);
+
                 current_item.DrawStuff(g, tbx_Prompt.Text);
+
+                int x1, x2, x3, y1, y2, y3 = -1;
+                int.TryParse(tbx_h1.Text, out y1);
+                int.TryParse(tbx_h2.Text, out y2);
+                int.TryParse(tbx_h3.Text, out y3);
+                int.TryParse(tbx_w1.Text, out x1);
+                int.TryParse(tbx_w2.Text, out x2);
+                int.TryParse(tbx_w3.Text, out x3);
+                int width = 0;
+                int height = 0;
+                if (y3 > 0)
+                {
+                    height = y3;
+                }
+                else
+                {
+                    if (y1 > 0 && y2 > 0)
+                    {
+                        height = y1 * y2;
+                    }
+                }
+                if (x3 > 0)
+                {
+                    width = x3;
+                }
+                else
+                {
+                    if (x1 > 0 && x2 > 0)
+                    {
+                        width = x1 * x2;
+                    }
+                }
+
+                //Graphics g = pnl_Preview.CreateGraphics();
+                Pen pen = new Pen(Color.Blue, 1);
+                Rectangle r = new Rectangle(0, 0, width, height);
+                g.DrawRectangle(pen, r);
             }
         }
 
@@ -426,42 +478,92 @@ namespace SuikodenPSPTranslator
 
         private void tbx_h_w_changed(object sender, EventArgs e)
         {
-            int x1, x2, x3, y1, y2, y3 = -1;
-            int.TryParse(tbx_h1.Text, out y1);
-            int.TryParse(tbx_h2.Text, out y2);
-            int.TryParse(tbx_h3.Text, out y3);
-            int.TryParse(tbx_w1.Text, out x1);
-            int.TryParse(tbx_w2.Text, out x2);
-            int.TryParse(tbx_w3.Text, out x3);
-            if (y3 > 0)
-            {
-                pnl_Preview.Height = y3;
-            }
-            else
-            {
-                if (y1 > 0 && y2 > 0)
-                {
-                    pnl_Preview.Height = y1 * y2;
-                }
-            }
-            if (x3 > 0)
-            {
-                pnl_Preview.Width = x3;
-            }
-            else
-            {
-                if (x1 > 0 && x2 > 0)
-                {
-                    pnl_Preview.Width = x1 * x2;
-                }
-            }
             Draw_Text();
+
         }
+
 
         private void tbx_Prompt_TextChanged(object sender, EventArgs e)
         {
 
             Draw_Text();
         }
+
+        
+
+        private void Notes_Get_Next_Or_Prev(bool next, string type)
+        {
+            int curr_no = 1;
+            int total_no = 1;
+            if (int.TryParse(tbx_Current.Text, out curr_no))
+            {
+                if (int.TryParse(tbx_Total.Text, out total_no))
+                {
+                    // get a list of items in file that match search criteria
+                    // order them in ascending order following the current item id
+                    List<GSDText_Item> results = new List<GSDText_Item>();
+
+                    // check which search type we're using to determine which property to search
+                    if (type == "Translation")
+                    {
+                        results = current_file.Text_Items.Where(x => x.Translation_Notes != "").ToList();
+                    }
+                    if (type == "Hacking")
+                    {
+                        results = current_file.Text_Items.Where(x => x.Hacking_Notes != "").ToList();
+                    }
+
+                    if (next)
+                    {
+                        results = results.OrderBy(x => Mod((x.id + 1 - curr_no), total_no)).ToList();
+                    }
+                    else
+                    {
+                        results = results.OrderByDescending(x => Mod((x.id + 1 - curr_no), total_no)).ToList();
+                    }
+
+
+                    foreach (GSDText_Item item in results)
+                    {
+                        // go through result list, make sure not picking up the current item
+                        if ((item.id + 1) != curr_no)
+                        {
+                            // set id to the next one and break out of loop
+                            tbx_Current.Text = (item.id + 1).ToString();
+                            break;
+                        }
+                    }
+                }
+
+            }
+        }
+
+        private void btn_TranslNotes_Back_Click(object sender, EventArgs e)
+        {
+
+            // get current and total numbers - make sure they're valid
+            Notes_Get_Next_Or_Prev(false, "Translation");
+        }
+
+        private void btn_TranslNotes_Forward_Click(object sender, EventArgs e)
+        {
+
+            Notes_Get_Next_Or_Prev(true, "Translation");
+        }
+
+        private void btn_HackNotes_Back_Click(object sender, EventArgs e)
+        {
+
+            Notes_Get_Next_Or_Prev(false, "Hacking");
+        }
+
+        private void btn_HackNotes_Forward_Click(object sender, EventArgs e)
+        {
+
+            Notes_Get_Next_Or_Prev(true, "Hacking");
+        }
     }
+
+
+
 }

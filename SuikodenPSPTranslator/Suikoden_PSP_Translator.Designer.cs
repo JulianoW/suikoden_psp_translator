@@ -1,4 +1,6 @@
-﻿namespace SuikodenPSPTranslator
+﻿using System.Windows.Forms;
+
+namespace SuikodenPSPTranslator
 {
     partial class Suikoden_PSP_Translator
     {
@@ -80,6 +82,11 @@
             this.label13 = new System.Windows.Forms.Label();
             this.tbx_Prompt = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
+            this.btn_TranslNotes_Back = new System.Windows.Forms.Button();
+            this.btn_TranslNotes_Forward = new System.Windows.Forms.Button();
+            this.btn_HackNotes_Back = new System.Windows.Forms.Button();
+            this.btn_HackNotes_Forward = new System.Windows.Forms.Button();
+            this.lbl_table_field = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // tbx_PSP_Text
@@ -114,7 +121,7 @@
             this.ddl_Files.FormattingEnabled = true;
             this.ddl_Files.Location = new System.Drawing.Point(12, 12);
             this.ddl_Files.Name = "ddl_Files";
-            this.ddl_Files.Size = new System.Drawing.Size(153, 797);
+            this.ddl_Files.Size = new System.Drawing.Size(153, 823);
             this.ddl_Files.TabIndex = 4;
             this.ddl_Files.SelectedIndexChanged += new System.EventHandler(this.ddl_Files_SelectedIndexChanged);
             // 
@@ -391,11 +398,11 @@
             // tbx_Translation_Notes
             // 
             this.tbx_Translation_Notes.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbx_Translation_Notes.Location = new System.Drawing.Point(174, 587);
+            this.tbx_Translation_Notes.Location = new System.Drawing.Point(174, 592);
             this.tbx_Translation_Notes.Multiline = true;
             this.tbx_Translation_Notes.Name = "tbx_Translation_Notes";
             this.tbx_Translation_Notes.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbx_Translation_Notes.Size = new System.Drawing.Size(676, 222);
+            this.tbx_Translation_Notes.Size = new System.Drawing.Size(676, 243);
             this.tbx_Translation_Notes.TabIndex = 57;
             this.tbx_Translation_Notes.TextChanged += new System.EventHandler(this.tbx_Translation_Notes_TextChanged);
             this.tbx_Translation_Notes.Leave += new System.EventHandler(this.tbx_Translation_Notes_Leave);
@@ -423,11 +430,11 @@
             // tbx_Hacking_Notes
             // 
             this.tbx_Hacking_Notes.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbx_Hacking_Notes.Location = new System.Drawing.Point(858, 587);
+            this.tbx_Hacking_Notes.Location = new System.Drawing.Point(858, 592);
             this.tbx_Hacking_Notes.Multiline = true;
             this.tbx_Hacking_Notes.Name = "tbx_Hacking_Notes";
             this.tbx_Hacking_Notes.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbx_Hacking_Notes.Size = new System.Drawing.Size(606, 222);
+            this.tbx_Hacking_Notes.Size = new System.Drawing.Size(606, 243);
             this.tbx_Hacking_Notes.TabIndex = 61;
             this.tbx_Hacking_Notes.TextChanged += new System.EventHandler(this.tbx_Hacking_Notes_TextChanged);
             this.tbx_Hacking_Notes.Leave += new System.EventHandler(this.tbx_Hacking_Notes_Leave);
@@ -465,10 +472,9 @@
             // 
             // pnl_Preview
             // 
-            this.pnl_Preview.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnl_Preview.Location = new System.Drawing.Point(1047, 420);
             this.pnl_Preview.Name = "pnl_Preview";
-            this.pnl_Preview.Size = new System.Drawing.Size(200, 100);
+            this.pnl_Preview.Size = new System.Drawing.Size(412, 138);
             this.pnl_Preview.TabIndex = 65;
             this.pnl_Preview.Visible = false;
             // 
@@ -573,13 +579,11 @@
             // 
             // tbx_Prompt
             // 
-            //this.tbx_Prompt.Cursor = System.Windows.Forms.Cursors.WaitCursor;
             this.tbx_Prompt.Location = new System.Drawing.Point(1292, 364);
             this.tbx_Prompt.Name = "tbx_Prompt";
             this.tbx_Prompt.Size = new System.Drawing.Size(58, 20);
             this.tbx_Prompt.TabIndex = 85;
             this.tbx_Prompt.Text = "1";
-            //this.tbx_Prompt.UseWaitCursor = true;
             this.tbx_Prompt.TextChanged += new System.EventHandler(this.tbx_Prompt_TextChanged);
             // 
             // label14
@@ -590,14 +594,67 @@
             this.label14.Size = new System.Drawing.Size(50, 13);
             this.label14.TabIndex = 84;
             this.label14.Text = "Prompt #";
-            //this.label14.UseWaitCursor = true;
+            // 
+            // btn_TranslNotes_Back
+            // 
+            this.btn_TranslNotes_Back.Location = new System.Drawing.Point(290, 564);
+            this.btn_TranslNotes_Back.Name = "btn_TranslNotes_Back";
+            this.btn_TranslNotes_Back.Size = new System.Drawing.Size(40, 23);
+            this.btn_TranslNotes_Back.TabIndex = 86;
+            this.btn_TranslNotes_Back.Text = "<";
+            this.btn_TranslNotes_Back.UseVisualStyleBackColor = true;
+            this.btn_TranslNotes_Back.Click += new System.EventHandler(this.btn_TranslNotes_Back_Click);
+            // 
+            // btn_TranslNotes_Forward
+            // 
+            this.btn_TranslNotes_Forward.Location = new System.Drawing.Point(336, 564);
+            this.btn_TranslNotes_Forward.Name = "btn_TranslNotes_Forward";
+            this.btn_TranslNotes_Forward.Size = new System.Drawing.Size(40, 23);
+            this.btn_TranslNotes_Forward.TabIndex = 87;
+            this.btn_TranslNotes_Forward.Text = ">";
+            this.btn_TranslNotes_Forward.UseVisualStyleBackColor = true;
+            this.btn_TranslNotes_Forward.Click += new System.EventHandler(this.btn_TranslNotes_Forward_Click);
+            // 
+            // btn_HackNotes_Back
+            // 
+            this.btn_HackNotes_Back.Location = new System.Drawing.Point(960, 564);
+            this.btn_HackNotes_Back.Name = "btn_HackNotes_Back";
+            this.btn_HackNotes_Back.Size = new System.Drawing.Size(40, 23);
+            this.btn_HackNotes_Back.TabIndex = 88;
+            this.btn_HackNotes_Back.Text = "<";
+            this.btn_HackNotes_Back.UseVisualStyleBackColor = true;
+            this.btn_HackNotes_Back.Click += new System.EventHandler(this.btn_HackNotes_Back_Click);
+            // 
+            // btn_HackNotes_Forward
+            // 
+            this.btn_HackNotes_Forward.Location = new System.Drawing.Point(1006, 564);
+            this.btn_HackNotes_Forward.Name = "btn_HackNotes_Forward";
+            this.btn_HackNotes_Forward.Size = new System.Drawing.Size(40, 23);
+            this.btn_HackNotes_Forward.TabIndex = 89;
+            this.btn_HackNotes_Forward.Text = ">";
+            this.btn_HackNotes_Forward.UseVisualStyleBackColor = true;
+            this.btn_HackNotes_Forward.Click += new System.EventHandler(this.btn_HackNotes_Forward_Click);
+            // 
+            // lbl_table_field
+            // 
+            this.lbl_table_field.AutoSize = true;
+            this.lbl_table_field.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_table_field.Location = new System.Drawing.Point(323, 71);
+            this.lbl_table_field.Name = "lbl_table_field";
+            this.lbl_table_field.Size = new System.Drawing.Size(0, 16);
+            this.lbl_table_field.TabIndex = 90;
             // 
             // Suikoden_PSP_Translator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.ClientSize = new System.Drawing.Size(1471, 818);
+            this.ClientSize = new System.Drawing.Size(1471, 843);
+            this.Controls.Add(this.lbl_table_field);
+            this.Controls.Add(this.btn_HackNotes_Forward);
+            this.Controls.Add(this.btn_HackNotes_Back);
+            this.Controls.Add(this.btn_TranslNotes_Forward);
+            this.Controls.Add(this.btn_TranslNotes_Back);
             this.Controls.Add(this.tbx_Prompt);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label13);
@@ -711,6 +768,12 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox tbx_Prompt;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Button btn_TranslNotes_Back;
+        private System.Windows.Forms.Button btn_TranslNotes_Forward;
+        private System.Windows.Forms.Button btn_HackNotes_Back;
+        private System.Windows.Forms.Button btn_HackNotes_Forward;
+        private System.Windows.Forms.Label lbl_table_field;
     }
+
 }
 
