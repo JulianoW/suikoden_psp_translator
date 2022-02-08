@@ -35,13 +35,16 @@ namespace SuikodenPSP.Tools
         private String Placeholder_Text()
         {
             // replace [Control Character]'s with a string representing the max possible width
-            string test = Translated_Text.Replace("[HERO]", "WWWWWWWW");
-            test = test.Replace("[CASTLE]", "WWWWWWWW");
-            test = test.Replace("[MCDOHL]", "WWWWWWWW");
-            test = test.Replace("[TORAN]", "WWWWWWWW");
-            test = test.Replace("[ARMY]", "WWWWWWWW");
-            test = test.Replace("[FAUXNANAMI]", "WWWWWWWW");
-            test = test.Replace("[FAUXHERO]", "WWWWWWWW");
+            string test = Translated_Text.Replace("[HERO]", "WWWWWWWWW");
+            test = test.Replace("[CASTLE]", "WWWWWWWWW");
+            test = test.Replace("[CASTLE_UP]", "WWWWWWWWW");
+            test = test.Replace("[HERO_UP]", "WWWWWWWWW");
+            test = test.Replace("[ARMY_UP]", "WWWWWWWWW");
+            test = test.Replace("[MCDOHL]", "WWWWWWWWW");
+            test = test.Replace("[TORAN]", "WWWWWWWWW");
+            test = test.Replace("[ARMY]", "WWWWWWWWW");
+            test = test.Replace("[FAUXNANAMI]", "WWWWWWWWW");
+            test = test.Replace("[FAUXHERO]", "WWWWWWWWW");
             test = test.Replace("[Orb]", "W");
             test = test.Replace("[Talisman]", "W");
             test = test.Replace("[Rune]", "W");
@@ -182,16 +185,16 @@ namespace SuikodenPSP.Tools
                 {'8',8},
                 {'9',8},
                 {'?',7},
-                {'!',5},
+                {'!',3},
                 {'\"',7},
                 {'#',7},
-                {':',5},
+                {':',4},
                 {'%',8},
                 {'&',7},
                 {'\'',5},
-                {'(',6},
-                {')',5},
-                {';',5},
+                {'(',8},
+                {')',4},
+                {';',4},
                 {'+',8},
                 {',',4},
                 {'-',8},
